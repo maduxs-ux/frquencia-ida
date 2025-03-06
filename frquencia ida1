@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequencia IDA</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Realize o forms IDA</h1>
+    </header>
+    <main>
+        <h2>Registro de Frequência IDA GRAÇAS</h2>
+        <form id="registroForm">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data"><br><br>
+
+            <label for="nome">Aplicador:</label>
+            <input type="text" id="nome" name="nome"><br><br>
+
+            <label for="assistidos1">Nome do Assistido 1:</label>
+            <input type="text" id="assistidos1" name="assistidos1">
+            <label for="assistidos1_pm_relacional">PM Relacional:</label>
+            <input type="checkbox" id="assistidos1_pm_relacional" name="assistidos1_pm_relacional">
+            <label for="assistidos1_terapia_aquatica">Terapia Aquática:</label>
+            <input type="checkbox" id="assistidos1_terapia_aquatica" name="assistidos1_terapia_aquatica">
+            <label for="assistidos1_psicomotricidade">Psicomotricidade Funcional:</label>
+            <input type="checkbox" id="assistidos1_psicomotricidade" name="assistidos1_psicomotricidade"><br><br>
+
+            <label for="assistidos2">Nome do Assistido 2:</label>
+            <input type="text" id="assistidos2" name="assistidos2">
+            <label for="assistidos2_pm_relacional">PM Relacional:</label>
+            <input type="checkbox" id="assistidos2_pm_relacional" name="assistidos2_pm_relacional">
+            <label for="assistidos2_terapia_aquatica">Terapia Aquática:</label>
+            <input type="checkbox" id="assistidos2_terapia_aquatica" name="assistidos2_terapia_aquatica">
+            <label for="assistidos2_psicomotricidade">Psicomotricidade Funcional:</label>
+            <input type="checkbox" id="assistidos2_psicomotricidade" name="assistidos2_psicomotricidade"><br><br>
+
+            <label for="assistidos3">Nome do Assistido 3:</label>
+            <input type="text" id="assistidos3" name="assistidos3">
+            <label for="assistidos3_pm_relacional">PM Relacional:</label>
+            <input type="checkbox" id="assistidos3_pm_relacional" name="assistidos3_pm_relacional">
+            <label for="assistidos3_terapia_aquatica">Terapia Aquática:</label>
+            <input type="checkbox" id="assistidos3_terapia_aquatica" name="assistidos3_terapia_aquatica">
+            <label for="assistidos3_psicomotricidade">Psicomotricidade Funcional:</label>
+            <input type="checkbox" id="assistidos3_psicomotricidade" name="assistidos3_psicomotricidade"><br><br>
+
+            <label for="assistidos4">Nome do Assistido 4:</label>
+            <input type="text" id="assistidos4" name="assistidos4">
+            <label for="assistidos4_pm_relacional">PM Relacional:</label>
+            <input type="checkbox" id="assistidos4_pm_relacional" name="assistidos4_pm_relacional">
+            <label for="assistidos4_terapia_aquatica">Terapia Aquática:</label>
+            <input type="checkbox" id="assistidos4_terapia_aquatica" name="assistidos4_terapia_aquatica">
+            <label for="assistidos4_psicomotricidade">Psicomotricidade Funcional:</label>
+            <input type="checkbox" id="assistidos4_psicomotricidade" name="assistidos4_psicomotricidade"><br><br>
+
+            <label for="assistidos5">Nome do Assistido 5:</label>
+            <input type="text" id="assistidos5" name="assistidos5">
+            <label for="assistidos5_pm_relacional">PM Relacional:</label>
+            <input type="checkbox" id="assistidos5_pm_relacional" name="assistidos5_pm_relacional">
+            <label for="assistidos5_terapia_aquatica">Terapia Aquática:</label>
+            <input type="checkbox" id="assistidos5_terapia_aquatica" name="assistidos5_terapia_aquatica">
+            <label for="assistidos5_psicomotricidade">Psicomotricidade Funcional:</label>
+            <input type="checkbox" id="assistidos5_psicomotricidade" name="assistidos5_psicomotricidade"><br><br>
+
+            <label for="sessoes">Quantidade de Sessões PM Relacional:</label>
+            <input type="number" id="sessoes" name="sessoes" min="1" max="7"><br><br>
+
+            <label for="sessoes_aquaticas">Quantidade de Sessões Aquáticas:</label>
+            <input type="number" id="sessoes_aquaticas" name="sessoes_aquaticas" min="1" max="7"><br><br>
+
+            <label for="sessoes_funcionais">Quantidade de Sessões Psicomotricidade Funcional:</label>
+            <input type="number" id="sessoes_funcionais" name="sessoes_funcionais" min="1" max="7"><br><br>
+             
+            <label for="total_sessões">Quantidade de Sessões ao Total:</label>
+            <input type="number" id="totais_sessões" name="total_sessoes" min="1" max="7"><br><br>
+
+            <label for="local">Locais realizadas:</label>
+            <input type="text" id="local" name="local"><br><br>
+            <input type="text" id="local2" name="local2" placeholder="Outro Local"><br><br>
+            <input type="text" id="local3" name="local3" placeholder="Outro Local"><br><br>
+            <input type="text" id="local4" name="local4" placeholder="Outro Local"><br><br>
+            <input type="text" id="local5" name="local5" placeholder="Outro Local"><br><br>
+
+            <label for="faltas">Faltas:</label>
+            <input type="text" id="faltas" name="faltas" placeholder="Nome do Assistido"><br><br>
+            <input type="text" id="faltas2" name="faltas2" placeholder="Nome do Assistido"><br><br>
+            <input type="text" id="faltas3" name="faltas3" placeholder="Nome do Assistido"><br><br>
+            <input type="text" id="faltas4" name="faltas4" placeholder="Nome do Assistido"><br><br>
+            <input type="text" id="faltas5" name="faltas5" placeholder="Nome do Assistido"><br><br>
+
+            <input type="button" value="Salvar" onclick="salvarRegistro()">
+            <input type="button" value="Visualizar Resultados" onclick="toggleResultados()">
+        </form>
+        <p>This is a simple website template.</p>
+
+        <h2>Resumo por Aplicador</h2>
+        <button onclick="toggleSection('resumo')">Ver Detalhes</button>
+        <div id="resumo" style="display: none;">
+            <!-- Resumo dos resultados será exibido aqui -->
+        </div>
+
+        <h2>Total de Sessões Realizadas</h2>
+        <button onclick="toggleSection('totalSessoes')">Ver Detalhes</button>
+        <div id="totalSessoes" style="display: none;">
+            <!-- Total de sessões realizadas será exibido aqui -->
+        </div>
+
+        <h2>Resultados Gerais</h2>
+        <button onclick="toggleSection('resultadosGerais')">Ver Detalhes</button>
+        <div id="resultadosGerais" style="display: none;">
+            <!-- Resultados gerais serão exibidos aqui -->
+        </div>
+
+        <h2>Resumo por Assistido</h2>
+        <button onclick="toggleSection('resumoAssistido')">Ver Detalhes</button>
+        <div id="resumoAssistido" style="display: none;">
+            <!-- Resumo por assistido será exibido aqui -->
+        </div>
+
+        <h2>Filtrar Resultados por Assistido</h2>
+        <input type="text" id="filtroAssistido" placeholder="Nome do Assistido">
+        <button onclick="filtrarAssistido()">Filtrar</button>
+    </main>
+    <footer>
+        <p>&copy; 2025 Instituto do Autismo</p>
+    </footer>
+    <script src="assets/js/scripts.js"></script>
+    <script>
+    function salvarRegistro() {
+        const form = document.getElementById('registroForm');
+        const formData = new FormData(form);
+        const registro = {};
+        formData.forEach((value, key) => {
+            registro[key] = value;
+        });
+        let registros = JSON.parse(localStorage.getItem('registros')) || [];
+        registros.push(registro);
+        localStorage.setItem('registros', JSON.stringify(registros));
+        alert('Registro salvo com sucesso!');
+        atualizarResumo();
+    }
+
+    function atualizarResumo() {
+        let registros = JSON.parse(localStorage.getItem('registros')) || [];
+        const resumo = {};
+        let totalSessoes = 0;
+        let totalFaltas = 0;
+        const currentMonth = new Date().getMonth();
+
+        registros.forEach(registro => {
+            const data = new Date(registro.data);
+            if (data.getMonth() === currentMonth) {
+                const aplicador = registro.nome;
+                const sessoesRelacional = parseInt(registro.sessoes) || 0;
+                const sessoesAquaticas = parseInt(registro.sessoes_aquaticas) || 0;
+                const sessoesFuncionais = parseInt(registro.sessoes_funcionais) || 0;
+                const faltas = [
+                    registro.faltas,
+                    registro.faltas2,
+                    registro.faltas3,
+                    registro.faltas4,
+                    registro.faltas5
+                ].filter(falta => falta).map(falta => falta.trim());
+
+                if (!resumo[aplicador]) {
+                    resumo[aplicador] = { sessoesRelacional: 0, sessoesAquaticas: 0, sessoesFuncionais: 0, faltas: [] };
+                }
+
+                resumo[aplicador].sessoesRelacional += sessoesRelacional;
+                resumo[aplicador].sessoesAquaticas += sessoesAquaticas;
+                resumo[aplicador].sessoesFuncionais += sessoesFuncionais;
+                totalSessoes += sessoesRelacional + sessoesAquaticas + sessoesFuncionais;
+                totalFaltas += faltas.length;
+
+                resumo[aplicador].faltas.push(...faltas);
+            }
+        });
+
+        const resumoDiv = document.getElementById('resumo');
+        resumoDiv.innerHTML = '';
+        Object.keys(resumo).forEach(aplicador => {
+            const aplicadorDiv = document.createElement('div');
+            aplicadorDiv.innerHTML = `
+                <p>Aplicador: ${aplicador}</p>
+                <p>Total de Sessões Relacional no Mês: ${resumo[aplicador].sessoesRelacional}</p>
+                <p>Total de Sessões Aquáticas no Mês: ${resumo[aplicador].sessoesAquaticas}</p>
+                <p>Total de Sessões Funcionais no Mês: ${resumo[aplicador].sessoesFuncionais}</p>
+                <p>Faltas: ${resumo[aplicador].faltas.join(', ')}</p>
+                <button onclick="toggleDetalhes(this)">Ver Detalhes</button>
+                <div class="detalhes" style="display: none;">
+                    <!-- Detalhes do aplicador serão exibidos aqui -->
+                </div>
+            `;
+            resumoDiv.appendChild(aplicadorDiv);
+        });
+
+        const totalSessoesDiv = document.getElementById('totalSessoes');
+        totalSessoesDiv.innerHTML = `
+            <p>Total de Sessões Realizadas: ${totalSessoes}</p>
+            <p>Total de Faltas: ${totalFaltas}</p>
+        `;
+
+        atualizarResultadosGerais();
+        atualizarResumoAssistido();
+    }
+
+    function atualizarResultadosGerais() {
+        let registros = JSON.parse(localStorage.getItem('registros')) || [];
+        const resultadosGerais = { sessoesRelacional: 0, sessoesAquaticas: 0, sessoesFuncionais: 0, faltas: 0, locais: {} };
+        const currentMonth = new Date().getMonth();
+        let totalSessoes = 0;
+
+        registros.forEach(registro => {
+            const data = new Date(registro.data);
+            if (data.getMonth() === currentMonth) {
+                const sessoesRelacional = parseInt(registro.sessoes) || 0;
+                const sessoesAquaticas = parseInt(registro.sessoes_aquaticas) || 0;
+                const sessoesFuncionais = parseInt(registro.sessoes_funcionais) || 0;
+                const faltas = [
+                    registro.faltas,
+                    registro.faltas2,
+                    registro.faltas3,
+                    registro.faltas4,
+                    registro.faltas5
+                ].filter(falta => falta).map(falta => falta.trim());
+
+                const locais = [
+                    registro.local,
+                    registro.local2,
+                    registro.local3,
+                    registro.local4,
+                    registro.local5
+                ].filter(local => local).map(local => local.trim());
+
+                resultadosGerais.sessoesRelacional += sessoesRelacional;
+                resultadosGerais.sessoesAquaticas += sessoesAquaticas;
+                resultadosGerais.sessoesFuncionais += sessoesFuncionais;
+                resultadosGerais.faltas += faltas.length;
+                totalSessoes += sessoesRelacional + sessoesAquaticas + sessoesFuncionais;
+
+                locais.forEach(local => {
+                    if (!resultadosGerais.locais[local]) {
+                        resultadosGerais.locais[local] = 0;
+                    }
+                    resultadosGerais.locais[local]++;
+                });
+            }
+        });
+
+        const resultadosGeraisDiv = document.getElementById('resultadosGerais');
+        resultadosGeraisDiv.innerHTML = `
+            <p>Total Geral de Sessões Relacional no Mês: ${resultadosGerais.sessoesRelacional}</p>
+            <p>Total Geral de Sessões Aquáticas no Mês: ${resultadosGerais.sessoesAquaticas}</p>
+            <p>Total Geral de Sessões Funcionais no Mês: ${resultadosGerais.sessoesFuncionais}</p>
+            <p>Total Geral de Faltas no Mês: ${resultadosGerais.faltas}</p>
+            <p>Soma de Todas as Sessões no Mês: ${totalSessoes}</p>
+            <p>Ranking de Locais Utilizados no Mês:</p>
+        `;
+
+        const locaisRanking = Object.keys(resultadosGerais.locais).sort((a, b) => resultadosGerais.locais[b] - resultadosGerais.locais[a]);
+        locaisRanking.forEach(local => {
+            const localDiv = document.createElement('div');
+            localDiv.innerHTML = `<p>${local}: ${resultadosGerais.locais[local]} vezes</p>`;
+            resultadosGeraisDiv.appendChild(localDiv);
+        });
+    }
+
+    function atualizarResumoAssistido() {
+        let registros = JSON.parse(localStorage.getItem('registros')) || [];
+        const resumoAssistido = {};
+        const currentMonth = new Date().getMonth();
+
+        registros.forEach(registro => {
+            const data = new Date(registro.data);
+            if (data.getMonth() === currentMonth) {
+                const assistidos = [
+                    { nome: registro.assistidos1, relacional: registro.assistidos1_pm_relacional, aquatica: registro.assistidos1_terapia_aquatica, funcional: registro.assistidos1_psicomotricidade },
+                    { nome: registro.assistidos2, relacional: registro.assistidos2_pm_relacional, aquatica: registro.assistidos2_terapia_aquatica, funcional: registro.assistidos2_psicomotricidade },
+                    { nome: registro.assistidos3, relacional: registro.assistidos3_pm_relacional, aquatica: registro.assistidos3_terapia_aquatica, funcional: registro.assistidos3_psicomotricidade },
+                    { nome: registro.assistidos4, relacional: registro.assistidos4_pm_relacional, aquatica: registro.assistidos4_terapia_aquatica, funcional: registro.assistidos4_psicomotricidade },
+                    { nome: registro.assistidos5, relacional: registro.assistidos5_pm_relacional, aquatica: registro.assistidos5_terapia_aquatica, funcional: registro.assistidos5_psicomotricidade }
+                ];
+
+                assistidos.forEach(assistido => {
+                    if (assistido.nome) {
+                        if (!resumoAssistido[assistido.nome]) {
+                            resumoAssistido[assistido.nome] = { relacional: 0, aquatica: 0, funcional: 0, faltas: 0 };
+                        }
+
+                        if (assistido.relacional) resumoAssistido[assistido.nome].relacional++;
+                        if (assistido.aquatica) resumoAssistido[assistido.nome].aquatica++;
+                        if (assistido.funcional) resumoAssistido[assistido.nome].funcional++;
+
+                        const faltas = [
+                            registro.faltas,
+                            registro.faltas2,
+                            registro.faltas3,
+                            registro.faltas4,
+                            registro.faltas5
+                        ].filter(falta => falta && falta.trim()).map(falta => falta.trim());
+
+                        if (faltas.includes(assistido.nome)) {
+                            resumoAssistido[assistido.nome].faltas++;
+                        }
+                    }
+                });
+            }
+        });
+
+        const resumoAssistidoDiv = document.getElementById('resumoAssistido');
+        resumoAssistidoDiv.innerHTML = '';
+        Object.keys(resumoAssistido).forEach(nome => {
+            const assistidoDiv = document.createElement('div');
+            assistidoDiv.innerHTML = `
+                <p>Assistido: ${nome}</p>
+                <p>Sessões Relacional: ${resumoAssistido[nome].relacional}</p>
+                <p>Sessões Aquáticas: ${resumoAssistido[nome].aquatica}</p>
+                <p>Sessões Funcionais: ${resumoAssistido[nome].funcional}</p>
+                <p>Faltas: ${resumoAssistido[nome].faltas}</p>
+                <button onclick="toggleDetalhes(this)">Ver Detalhes</button>
+                <div class="detalhes" style="display: none;">
+                    <!-- Detalhes do assistido serão exibidos aqui -->
+                </div>
+            `;
+            resumoAssistidoDiv.appendChild(assistidoDiv);
+        });
+    }
+
+    function toggleResultados() {
+        const resumoDiv = document.getElementById('resumo');
+        const totalSessoesDiv = document.getElementById('totalSessoes');
+        const resultadosGeraisDiv = document.getElementById('resultadosGerais');
+        const resumoAssistidoDiv = document.getElementById('resumoAssistido');
+        const isVisible = resumoDiv.style.display === 'block';
+
+        resumoDiv.style.display = isVisible ? 'none' : 'block';
+        totalSessoesDiv.style.display = isVisible ? 'none' : 'block';
+        resultadosGeraisDiv.style.display = isVisible ? 'none' : 'block';
+        resumoAssistidoDiv.style.display = isVisible ? 'none' : 'block';
+
+        if (!isVisible) {
+            atualizarResumo();
+        }
+    }
+
+    function resetarRegistros() {
+        const currentMonth = new Date().getMonth();
+        const lastResetMonth = localStorage.getItem('lastResetMonth');
+
+        if (lastResetMonth === null || parseInt(lastResetMonth) !== currentMonth) {
+            localStorage.setItem('registros', JSON.stringify([]));
+            localStorage.setItem('lastResetMonth', currentMonth.toString());
+        }
+    }
+
+    // Resetar registros e atualizar o resumo ao carregar a página
+    window.onload = function() {
+        resetarRegistros();
+        atualizarResumo();
+    };
+
+    function filtrarAssistido() {
+        const filtro = document.getElementById('filtroAssistido').value.trim().toLowerCase();
+        const resumoAssistidoDiv = document.getElementById('resumoAssistido');
+        const assistidoDivs = resumoAssistidoDiv.getElementsByTagName('div');
+
+        for (let i = 0; i < assistidoDivs.length; i++) {
+            const assistidoDiv = assistidoDivs[i];
+            const assistidoNome = assistidoDiv.getElementsByTagName('p')[0].textContent.toLowerCase();
+            if (assistidoNome.includes(filtro)) {
+                assistidoDiv.style.display = 'block';
+            } else {
+                assistidoDiv.style.display = 'none';
+            }
+        }
+    }
+
+    function toggleDetalhes(button) {
+        const detalhesDiv = button.nextElementSibling;
+        const isVisible = detalhesDiv.style.display === 'block';
+        detalhesDiv.style.display = isVisible ? 'none' : 'block';
+        button.textContent = isVisible ? 'Ver Detalhes' : 'Ocultar Detalhes';
+    }
+
+    function toggleSection(sectionId) {
+        const sectionDiv = document.getElementById(sectionId);
+        const isVisible = sectionDiv.style.display === 'block';
+        sectionDiv.style.display = isVisible ? 'none' : 'block';
+        const button = sectionDiv.previousElementSibling;
+        button.textContent = isVisible ? 'Ver Detalhes' : 'Ocultar Detalhes';
+    }
+</script>
+</body>
+</html>
