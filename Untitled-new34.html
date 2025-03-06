@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #app {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script>
+        const { useState } = React;
+
+        const SessionTypeSelector = ({ name, value, onChange }) => (
+            <select name={name} value={value} onChange={onChange}>
+                <option value="PM">PM</option>
+                <option value="Relacional">Relacional</option>
+                <option value="Funcional">Funcional</option>
+                <option value="Aquatica">Aquatica</option>
+            </select>
+        );
+
+        const AttendanceForm = ({ addAttendees }) => {
+            const [formStates, setFormStates] = useState([{
+                name: '',
+                sessions: '',
+                sessionType: 'PM',
+                absent: false
+            }]);
+
+            const handleChange = (index, e) => {
+                const { name, value, type, checked } = e.target;
+                const newFormStates = [...formStates];
+                newFormStates[index] = {
+                    ...newFormStates[index],
+                    [name]: type === 'checkbox' ? checked : value
+                };
+                setFormStates(newFormStates);
+            };
+
+            const handleAddAttendee = () => {
+                setFormStates([...formStates, {
+                    name: '',
+                    sessions: '',
+                    sessionType: 'PM',
+                    absent: false
+                }]);
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                addAttendees(formStates);
+                setFormStates([{
+                    name: '',
+                    sessions: '',
+                    sessionType: 'PM',
+                    absent: false
+                }]);
+            };
+
+            return (
+                <form onSubmit={handleSubmit}>
+                    {formStates.map((formState, index) => (
+                        <div key={index}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Nome do assistido"
+                                value={formState.name}
+                                onChange={(e) => handleChange(index, e)}
+                                required
+                            />
+                            <input
+                                type="number"
+                                name="sessions"
+                                placeholder="Número de sessões"
+                                value={formState.sessions}
+                                onChange={(e) => handleChange(index, e)}
+                                required
+                            />
+                            <SessionTypeSelector
+                                name="sessionType"
+                                value={formState.sessionType}
+                                onChange={(e) => handleChange(index, e)}
+                            />
+                            <label>
+                                Faltou:
+                                <input
+                                    type="checkbox"
+                                    name="absent"
+                                    checked={formState.absent}
+                                    onChange={(e) => handleChange(index, e)}
+                                />
+                            </label>
+                        </div>
+                    ))}
+                    <button type="button" onClick={handleAddAttendee}>Adicionar Assistido</button>
+                    <button type="submit">Submeter Todos</button>
+                </form>
+            );
+        };
+
+        const AttendanceList = ({ attendees }) => (
+            <div>
+                <h2>Lista de Presença</h2>
+                <ul>
+                    {attendees.map((attendee, index) => (
+                        <li key={index}>
+                            {attendee.name} - {attendee.sessions} sessões - {attendee.sessionType} - {attendee.absent ? 'Faltou' : 'Presente'}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+
+        const AttendanceSummary = ({ attendees }) => {
+            const totalSessions = attendees.reduce((total, attendee) => total + parseInt(attendee.sessions), 0);
+            const totalAbsences = attendees.filter(attendee => attendee.absent).length;
+
+            const sessionTypeCounts = attendees.reduce((counts, attendee) => {
+                counts[attendee.sessionType] = (counts[attendee.sessionType] || 0) + parseInt(attendee.sessions);
+                return counts;
+            }, {});
+
+            return (
+                <div>
+                    <h2>Resumo do Mês</h2>
+                    <p>Total de Sessões: {totalSessions}</p>
+                    <p>Total de Faltas: {totalAbsences}</p>
+                    <h3>Sessões por Tipo</h3>
+                    <ul>
+                        {Object.entries(sessionTypeCounts).map(([type, count]) => (
+                            <li key={type}>{type}: {count} sessões</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
+        const FilteredAttendance = ({ attendees }) => {
+            const [filterName, setFilterName] = useState('');
+
+            const handleFilterChange = (e) => {
+                setFilterName(e.target.value);
+            };
+
+            const filteredAttendees = attendees.filter(attendee => attendee.name.toLowerCase().includes(filterName.toLowerCase()));
+
+            return (
+                <div>
+                    <h2>Filtrar Assistido</h2>
+                    <input
+                        type="text"
+                        placeholder="Nome do assistido"
+                        value={filterName}
+                        onChange={handleFilterChange}
+                    />
+                    <ul>
+                        {filteredAttendees.map((attendee, index) => (
+                            <li key={index}>
+                                {attendee.name} - {attendee.sessions} sessões - {attendee.sessionType} - {attendee.absent ? 'Faltou' : 'Presente'}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [attendees, setAttendees] = useState([]);
+
+            const addAttendees = (newAttendees) => {
+                setAttendees([...attendees, ...newAttendees]);
+            };
+
+            return (
+                <div>
+                    <h1>Attendance Tracker</h1>
+                    <AttendanceForm addAttendees={addAttendees} />
+                    <AttendanceList attendees={attendees} />
+                    <AttendanceSummary attendees={attendees} />
+                    <FilteredAttendance attendees={attendees} />
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+</body>
+</html>
