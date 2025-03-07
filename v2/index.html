@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms IDA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Forms IDA</h1>
+
+        <!-- Formulário de Registro -->
+         <div class="container">
+            <div class="inp">
+                <form id="attendance-form">
+                    <input type="text" id="name" placeholder="Nome do assistido" required>
+                    <input type="number" id="sessions" placeholder="Número de sessões" required>
+                    <label for="session-type">
+                        <h4>Tipo de Sessão:</h4> 
+                    </label>
+                    <select id="session-type">
+                        <option value="Relacional">Relacional</option>
+                        <option value="Funcional">Funcional</option>
+                        <option value="Aquatica">Aquática</option>
+                    </select>
+                    <a href="#" class="add">&plus;</a> <br>
+            </div>
+                <label>
+                    Faltou:
+                    <input type="checkbox" id="absent"> <br>
+                </label>
+                <button type="submit">Adicionar Assistido</button>
+            </form>    
+         </div>
+        <!-- Lista de Assistidos -->
+        <div id="attendance-list">
+            <h2>Lista de Presença</h2>
+            <ul id="attendees"></ul>
+        </div>
+
+        <!-- Resumo -->
+        <div id="attendance-summary">
+            <h2>Resumo do Mês</h2>
+            <p>Total de Sessões: <span id="total-sessions">0</span></p>
+            <p>Total de Faltas: <span id="total-absences">0</span></p>
+            <h3>Sessões por Tipo</h3>
+            <ul id="sessions-by-type"></ul>
+        </div>
+
+        <!-- Filtro -->
+        <div id="attendance-filter">
+            <h2>Filtrar Assistido</h2>
+            <input type="text" id="filter-name" placeholder="Nome do assistido">
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
